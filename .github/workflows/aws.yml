@@ -73,7 +73,12 @@ jobs:
         # be deployed to ECS.
         echo "pwd:"
         pwd
-        echo "files"
+        echo "files:"
+        ls -l
+        cd ./AspNetDemo
+        echo "pwd2:"
+        pwd
+        echo "files2:"
         ls -l
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
