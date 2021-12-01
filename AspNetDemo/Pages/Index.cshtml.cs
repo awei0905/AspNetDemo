@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AspNetDemo.Pages
@@ -14,7 +15,12 @@ namespace AspNetDemo.Pages
 
         public void OnGet()
         {
+            // Retreive server/local IP address
+            var feature = HttpContext.Features.Get<IHttpConnectionFeature>();
+            LocalIPAddr = feature?.LocalIpAddress?.ToString();
 
         }
+        public string LocalIPAddr { get; private set; }
+
     }
 }
